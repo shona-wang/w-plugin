@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./css/tab.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="btns" style="margin-bottom: 20px;">
+        <button class="border">card/border样式进行切换</button>
+        <button class="top">上</button>
+        <button class="right">右</button>
+        <button class="bottom">下</button>
+        <button class="left">左</button>
+        <button class="hover">鼠标hover切换</button>
+        <button class="add">增加tab</button>
+    </div>
+    <div id="tab"></div>
+    <div id="box" style="display:none;">
+        <p>此处为Id方式加载的配置管理tab内容</p>
+    </div>
+    <script src="./js/jquery-1.11.1.min.js"></script>
+    <script src="./js/tab.js"></script>
+    <script>
+        var param = {
+                labels: ['用户管理','配置管理','角色管理'],
+                contents: [{
+                    type: 'string',
+                    content: '<p>此处为string方式加载的用户管理tab内容</p>'
+                },{
+                    type: 'node',
+                    content: 'box'
+                }],
+                type: 'card',
+                position: 'top',
+                isHover: false,
+                addable: true
+        };
+        $('#tab').tab(param);
+        $('button.border').on('click', function(){
+            if(param.type == 'card'){
+                param.type = 'border'
+            } else {
+                param.type = 'card'
+            }
+            $('#tab').data('plugin-tab').reload(param);
+        });
+        $('button.top').on('click', function(){
+            param.position = 'top';
+            $('#tab').data('plugin-tab').reload(param);
+        });
+        $('button.right').on('click', function(){
+            param.position = 'right';
+            $('#tab').data('plugin-tab').reload(param);
+        });
+        $('button.bottom').on('click', function(){
+            param.position = 'bottom';
+            $('#tab').data('plugin-tab').reload(param);
+        });
+        $('button.left').on('click', function(){
+            param.position = 'left';
+            $('#tab').data('plugin-tab').reload(param);
+        });
+        $('button.hover').on('click', function(){
+            param.isHover = !param.isHover;
+            $('#tab').data('plugin-tab').reload(param);
+        });
+        $('button.add').on('click', function(){
+            $('#tab').data('plugin-tab').add({
+                labels: '权限管理',
+                contents: {
+                    type: 'string',
+                    content: '<p>此处为string方式加载的权限管理tab内容</p>'
+                }
+            })
+        })
+    </script>
+</body>
+</html>
