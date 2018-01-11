@@ -15,7 +15,7 @@
             type: 'border',
             position: 'top',
             isHover: true,
-            addable: false
+            deleteable: false
         };
     var Tab = function (self,options) {
         this.setting = $.extend({}, defaults, options);
@@ -92,7 +92,7 @@
                             'transform': 'translateX(' +  num + 'px)'
                         });
                     }
-                    if (that.setting.addable) {
+                    if (that.setting.deleteable) {
                         $item.find('.w-icon-close').hide();
                         $target.find('.w-icon-close').css({
                             'display': 'inline-block'
@@ -111,7 +111,7 @@
                     change(e);
                 });
             }
-            if(this.setting.addable){
+            if (this.setting.deleteable) {
                 $('.w-tabs_item.is-active .w-icon-close').css({
                     'display': 'inline-block'
                 });
@@ -127,7 +127,7 @@
             this._hover(0);
         },
         add: function(param){
-            this.setting.addable = true;
+            this.setting.deleteable = true;
             this.setting.labels.push(param.labels);
             this.setting.contents.push(param.contents);
             var num = this.setting.contents.length;

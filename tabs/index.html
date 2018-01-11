@@ -25,7 +25,7 @@
     <script src="./js/tab.js"></script>
     <script>
         var param = {
-                labels: ['用户管理','配置管理','角色管理'],
+                labels: ['用户管理','配置管理'],
                 contents: [{
                     type: 'string',
                     content: '<p>此处为string方式加载的用户管理tab内容</p>'
@@ -36,7 +36,7 @@
                 type: 'card',
                 position: 'top',
                 isHover: false,
-                addable: true
+                deleteable: true
         };
         $('#tab').tab(param);
         $('button.border').on('click', function(){
@@ -74,8 +74,9 @@
                     type: 'string',
                     content: '<p>此处为string方式加载的权限管理tab内容</p>'
                 }
-            })
+            });
         })
+
     </script>
 </body>
 </html>
