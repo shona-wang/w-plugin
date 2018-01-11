@@ -16,6 +16,9 @@
             },{
                 type: 'node',
                 content: 'box'
+            },{
+                type: 'string',
+                content: '<p>此处为string方式加载的角色管理tab内容</p>'
             }],
             type: 'card',
             position: 'top',
