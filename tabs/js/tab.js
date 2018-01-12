@@ -15,7 +15,8 @@
             type: 'border',
             position: 'top',
             isHover: true,
-            deleteable: false
+            deleteable: false,
+            beforeDel: null
         };
     var Tab = function (self,options) {
         this.setting = $.extend({}, defaults, options);
@@ -116,8 +117,13 @@
                     'display': 'inline-block'
                 });
                 $item.find('.w-icon-close').on('click',function(){
-                    var index = $(this).attr('index');
-                    that.delete(index);
+                    var index = $(this).attr('index'),
+                        delBefore = that.setting.beforeDel;
+                    if (delBefore) {
+                        if(delBefore()){
+                            that.delete(index);
+                        }
+                    }
                 });
             }
         },

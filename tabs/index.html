@@ -36,7 +36,12 @@
                 type: 'card',
                 position: 'top',
                 isHover: false,
-                deleteable: true
+                deleteable: true,
+                beforeDel: function(){
+                    if(confirm('确定删除？')){
+                        return true;
+                    }
+                }
         };
         $('#tab').tab(param);
         $('button.border').on('click', function(){

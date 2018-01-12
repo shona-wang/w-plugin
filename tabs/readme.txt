@@ -23,17 +23,23 @@
             type: 'card',
             position: 'top',
             isHover: false,
-            deleteable: true
+            deleteable: true,
+            beforeDel: function(){
+                if(confirm('确定删除？')){
+                    return true;
+                }
+            }
     });
 [ param: ]
-    < labels: >     tab名称 | Array  | (暂不支持tabs上显示图标)
-    < contents: >   tab内容 | Array  
-        < type: >   tab内容加载方式 | String | string: 字符串加载  node： 页面dom结点加载(只支持ID结点) | 默认string
-        < content: > tab具体内容 | String | 如果type：node, content代表结点的ID
-    < type: >  tab样式 | String | card: 卡片式  border: 边框式  | 默认border
-    < position: > tab位置 | String | top bottom left right
-    < isHover: > 是否需要hover时切换tab | Boolean | 默认 false
-    < deleteable: > 是否可以进行删除 | Boolean | 默认 false 
+    labels:      tab名称 | Array  | (暂不支持tabs上显示图标)
+    contents:    tab内容 | Array  
+        type:    tab内容加载方式 | String | string: 字符串加载  node： 页面dom结点加载(只支持ID结点) | 默认string
+        content:  tab具体内容 | String | 如果type：node, content代表结点的ID
+    type:   tab样式 | String | card: 卡片式  border: 边框式  | 默认border
+    position:  tab位置 | String | top bottom left right
+    isHover:  是否需要hover时切换tab | Boolean | 默认 false
+    deleteable:  是否可以进行删除 | Boolean | 默认 false 
+    beforeDel: 删除tab之前执行的函数，需要返回值为true时才能进行删除,不支持异步函数
 [ events: ]
     实例化Tab: $('#tab').tab(param)
     重新加载Tab: $('#tab').data('plugin-tab').reload(param);
